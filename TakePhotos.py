@@ -27,7 +27,9 @@ if id in id_names['id'].values:
 else:
     name = input('Please Enter you name: ')
     os.makedirs(f'faces/{id}')
-    id_names = id_names.append({'id': id, 'name': name}, ignore_index=True)
+    #id_names = id_names.append({'id': id, 'name': name}, ignore_index=True)
+    new_row = {'id': id, 'name': name}
+    id_names = pd.concat([id_names, pd.DataFrame([new_row])], ignore_index=True)    
     id_names.to_csv('id-names.csv')
 
 print("\nLet's capture!")
